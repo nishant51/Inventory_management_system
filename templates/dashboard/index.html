@@ -3,9 +3,12 @@
     <title>dashboard</title>
 
 
-    {%block content%}
+{%block content%}
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+
+    
+     <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -97,5 +100,13 @@
           </div>
           </a>
         </div>
-    {%endblock%}
+       
+     </div>
+    {% else%}
+     <div class="container">
+          {% include 'dashboard/userindex.html' %}
+     </div>
+    {% endif %}
+
+{%endblock%}
 

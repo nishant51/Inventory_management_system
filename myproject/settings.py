@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
+    'user',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' # For Deployment """
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL ='dashboard-index'
+
+LOGIN_URL = 'user-login'
+
+# settings.py
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # Use 'bootstrap', 'bootstrap4', or other available packs
+
+# settings.py
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
