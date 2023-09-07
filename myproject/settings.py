@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'dashboard',
     'user',
     'crispy_forms',
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -136,8 +137,6 @@ LOGIN_URL = 'user-login'
 
 # settings.py
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'  # Use 'bootstrap', 'bootstrap4', or other available packs
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
-# settings.py
-
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = "bootstrap4"

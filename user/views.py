@@ -39,7 +39,8 @@ def register(request):
 
 def logoutpage(request):
     logout(request)
-    return redirect('user-login')
+    return redirect('user-logout')
+
 
 def profile(request):
     return render(request,'user/profile.html')

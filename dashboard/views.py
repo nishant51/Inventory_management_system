@@ -1,16 +1,71 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from .models import Product
+from .form import *
+from django.contrib.auth.models import User
 
 @login_required
 def index(request):
     return render(request,'dashboard/index.html')
+@login_required
+def costumer(request):
+    costumers = User.objects.all()
+    context = {
+        'costumers':costumers
+    }
+    return render(request,'dashboard/costumer.html',context)
 
-def staff(request):
-    return render(request,'dashboard/staff.html')
+def costumerdetail(request,pk):
+    costumers = User.objects.get(id=pk)
+    context = {
+        'costumers':costumers
+    }
+    return render(request,'dashboard/costumerdetail.html',context)
 
+@login_required
 def product(request):
-    return render(request,'dashboard/product.html')
+    if request.method == 'POST':
+        form = productform(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('dashboard-product')
+    else:
+        form =productform()
+    items = Product.objects.all()
+    context = {
+        'items': items,
+        'form':form
+    }
+    return render(request,'dashboard/product.html',context)
 
+@login_required
+def product_edit(request, pk):
+    item =Product.objects.get(id=pk)
+    if request.method =='POST':
+        form = productform(request.POST,instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard-product')
+    else:
+        form = productform(instance=item)
+    context = {
+        'form':form,
+        'pk':pk
+    }
+    return render(request, 'dashboard/productedit.html', context)
+
+
+@login_required
+def product_delete(request, pk):
+    item = Product.objects.get(id=pk)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('dashboard-product')
+    context = {
+        'item': item
+    }
+    return render(request, 'dashboard/deleteproduct.html', context)
+        
+@login_required
 def order(request):
     return render(request,'dashboard/order.html')

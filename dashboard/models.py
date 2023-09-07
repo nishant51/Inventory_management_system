@@ -5,6 +5,8 @@ CATEGORY = (
     ('ELECTRONIC','ELECTRONIC'),
     ('STATIONARY','STATIONARY'),
     ('HARDWARE','HARDWARE'),
+    ('FOOD','FOOD'),
+    ('ORNAMENTS','ORNAMENTS'),
 )
 # Create your models here.
 class Product(models.Model):
@@ -20,7 +22,7 @@ class Product(models.Model):
     
 class Order(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
-    staff = models.ForeignKey(User,models.CASCADE,null=True)
+    costumer = models.ForeignKey(User,models.CASCADE,null=True)
     orderquantity = models.PositiveIntegerField(null=True)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -28,4 +30,4 @@ class Order(models.Model):
         verbose_add_plural:'Order'
 
     def __str__(self):
-        return f'{self.product} ordered by {self.staff.username}'
+        return f'{self.product} ordered by {self.costumer.username}'
