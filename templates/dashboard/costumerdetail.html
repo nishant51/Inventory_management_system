@@ -41,7 +41,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-info text-white">
-                        {{user.username}} Information
+                        {{costumers.username}} Information
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -51,26 +51,26 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">🧑‍💼Name :</th>
-                                            <td>{{user.username}}</td>
+                                            <td>{{costumers.username}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">📧Email :</th>
-                                            <td>{{user.email}}</td>
+                                            <td>{{costumers.email}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">☎️Phone :</th>
-                                            <td>{{user.profile.phone}}</td>
+                                            <td>{{costumers.profile.phone}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">📬Address :</th>
-                                            <td>{{user.profile.address}}</td>
+                                            <td>{{costumers.profile.address}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                             </div>
                             <div class="col-md-4">
-                                <img class="img-thumbnail" src="{{user.profile.image.url}}" alt="">
+                                <img class="img-thumbnail" src="{{costumers.profile.image.url}}" alt="">
                             </div>
                         </div>
                     </div>

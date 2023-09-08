@@ -28,10 +28,14 @@ def register(request):
        if form.is_valid:
            form.save()
            user=form.cleaned_data.get('username')
-           messages.success(request,'Account was created sucessfully' + user)
+           messages.success(request,'Account was created sucessfully ' + user +' continue to log in ')
            return redirect('user-login')
-       else:
-           form = createuserform()
+       else:     
+           messages.success(request,'The User could not be created because the data didnot validate. ')
+   else:
+       form = createuserform()
+       
+
    context = {
         'form':form
     }
@@ -39,7 +43,7 @@ def register(request):
 
 def logoutpage(request):
     logout(request)
-    return redirect('user-logout')
+    return redirect('user-login')
 
 
 def profile(request):

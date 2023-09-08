@@ -46,10 +46,10 @@
                         {% for costumr in costumers %}
                         <tr>
                             <th scope="row"><a class="btn btn-info btn-sm" href="{% url 'dashboard-costumer-detail' costumr.id %}">View</a></th>
-                            <td>{{costumer.username}}</td>
-                            <td>{{costumer.profile.address}}</td>
-                            <td>{{costumer.email}}</td>
-                            <td>{{costumer.profile.phone}}</td>
+                            <td>{{costumr.username}}</td>
+                            <td>{{costumr.profile.address}}</td>
+                            <td>{{costumr.email}}</td>
+                            <td>{{costumr.profile.phone}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

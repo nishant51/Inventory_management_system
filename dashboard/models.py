@@ -21,7 +21,7 @@ class Product(models.Model):
         return f'{self.name} of quantity {self.quanitiy}'
     
 class Order(models.Model):
-    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
+    name = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
     costumer = models.ForeignKey(User,models.CASCADE,null=True)
     orderquantity = models.PositiveIntegerField(null=True)
     date = models.DateTimeField(auto_now_add=True)
@@ -30,4 +30,4 @@ class Order(models.Model):
         verbose_add_plural:'Order'
 
     def __str__(self):
-        return f'{self.product} ordered by {self.costumer.username}'
+        return f'{self.costumer}-{self.name}'

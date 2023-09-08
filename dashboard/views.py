@@ -1,12 +1,31 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Product
+from .models import Product,Order
 from .form import *
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 @login_required
 def index(request):
-    return render(request,'dashboard/index.html')
+    orders = Order.objects.all()
+    products = Product.objects.all()
+    if request.method =='POST':
+            form =orderform(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.costumer = request.user
+                instance.save()
+                return redirect('dashboard-index')
+    else:
+        form = orderform()
+    context = {
+        'orders' :orders,
+        'form':form,
+        'product':products
+    }
+    return render(request,'dashboard/index.html',context)
+
+
 @login_required
 def costumer(request):
     costumers = User.objects.all()
@@ -15,6 +34,7 @@ def costumer(request):
     }
     return render(request,'dashboard/costumer.html',context)
 
+@login_required
 def costumerdetail(request,pk):
     costumers = User.objects.get(id=pk)
     context = {
@@ -28,6 +48,8 @@ def product(request):
         form = productform(request.POST)
         if form.is_valid:
             form.save()
+            product_name = form.cleaned_data.get('name')
+            messages.success(request, f'{product_name} has been added')
             return redirect('dashboard-product')
     else:
         form =productform()
@@ -68,4 +90,9 @@ def product_delete(request, pk):
         
 @login_required
 def order(request):
-    return render(request,'dashboard/order.html')
+    orders= Order.objects.all()
+    context = {
+        'orders':orders
+    }
+    return render(request,'dashboard/order.html',context)
+
