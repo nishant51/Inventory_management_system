@@ -9,6 +9,10 @@ from django.contrib import messages
 def index(request):
     orders = Order.objects.all()
     products = Product.objects.all()
+    costumers = User.objects.all()
+    costumer_count = costumers.count()
+    product_count = products.count()
+    order_count = orders.count()
     if request.method =='POST':
             form =orderform(request.POST)
             if form.is_valid():
@@ -21,16 +25,27 @@ def index(request):
     context = {
         'orders' :orders,
         'form':form,
-        'product':products
-    }
+        'product':products,
+        'costumer_count':costumer_count,
+        'product_count':product_count,
+        'order_count':order_count,
+        }
     return render(request,'dashboard/index.html',context)
 
 
 @login_required
 def costumer(request):
     costumers = User.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
+    costumer_count = costumers.count()
+    product_count = products.count()
+    order_count = orders.count()
     context = {
-        'costumers':costumers
+        'costumers':costumers,
+        'costumer_count':costumer_count,
+        'product_count':product_count,
+        'order_count':order_count,
     }
     return render(request,'dashboard/costumer.html',context)
 
@@ -38,12 +53,18 @@ def costumer(request):
 def costumerdetail(request,pk):
     costumers = User.objects.get(id=pk)
     context = {
-        'costumers':costumers
+        'costumers':costumers,
     }
     return render(request,'dashboard/costumerdetail.html',context)
 
 @login_required
 def product(request):
+    costumers = User.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
+    costumer_count = costumers.count()
+    product_count = products.count()
+    order_count = orders.count()
     if request.method == 'POST':
         form = productform(request.POST)
         if form.is_valid:
@@ -56,7 +77,10 @@ def product(request):
     items = Product.objects.all()
     context = {
         'items': items,
-        'form':form
+        'form':form,
+        'costumer_count':costumer_count,
+        'product_count':product_count,
+        'order_count':order_count,
     }
     return render(request,'dashboard/product.html',context)
 
@@ -91,8 +115,31 @@ def product_delete(request, pk):
 @login_required
 def order(request):
     orders= Order.objects.all()
+    costumers = User.objects.all()
+    products = Product.objects.all()
+    costumer_count = costumers.count()
+    product_count = products.count()
+    order_count = orders.count()
     context = {
-        'orders':orders
+        'orders':orders,
+        'costumer_count':costumer_count,
+        'product_count':product_count,
+        'order_count':order_count,
     }
     return render(request,'dashboard/order.html',context)
 
+
+@login_required
+def alltables(request):
+    items = Product.objects.all()
+    orders= Order.objects.all()
+    costumers = User.objects.all()
+    products = Product.objects.all()
+    context = {
+     'orders':orders,
+     'items': items,
+     'costumers':costumers,
+     'orders' :orders,
+     'product':products,
+    }
+    return render(request,'tables.html',context)
