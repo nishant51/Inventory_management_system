@@ -1,84 +1,147 @@
-
-{% block content%}
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<form class="form-horizontal" action='' method="POST">
-    {% csrf_token %}
-  <fieldset>
-    <div id="legend">
-      <legend class="">Register Yourself With Us 🙂</legend>
-    </div>
-
-    <div class="control-group">
-      <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
-      <div class="controls">
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title> 
+    <link rel="stylesheet" href="style.css">
+    <style>@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      body{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4070f4;
+      }
+      .wrapper{
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      }
+      .wrapper h2{
+        position: relative;
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+      }
+      .wrapper h2::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 12px;
+        background: #4070f4;
+      }
+      .wrapper form{
+        margin-top: 30px;
+      }
+      .wrapper form .input-box{
+        height: 52px;
+        margin: 18px 0;
+      }
+      form .input-box input{
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+      .input-box input:focus,
+      .input-box input:valid{
+        border-color: #4070f4;
+      }
+      form .policy{
+        display: flex;
+        align-items: center;
+      }
+      form h3{
+        color: #707070;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+      .input-box.button input{
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #4070f4;
+        cursor: pointer;
+      }
+      .input-box.button input:hover{
+        background: #0e4bf1;
+      }
+      form .text h3{
+       color: #333;
+       width: 100%;
+       text-align: center;
+      }
+      form .text h3 a{
+        color: #4070f4;
+        text-decoration: none;
+      }
+      form .text h3 a:hover{
+        text-decoration: underline;
+      }</style>
+   </head>
+<body>
+  <div class="wrapper">
+    <h2>Registration</h2>
+    {% if messages %}
+       <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+       </ul>
+ {% endif %}
+    <form method="POST" action="#">
+      {% csrf_token %}
+      <div class="input-box">
+        {{form.username.label}}
         {{form.username}}
-        <p class="help-block">Username can contain any letters or numbers</p>
       </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- E-mail -->
-      <label class="control-label" for="email">E-mail</label>
-      <div class="controls">
-      {{form.email}}      
-      <p class="help-block">Please provide your E-mail</p>
+      <div class="input-box">
+        {{form.email.label}}
+        {{form.email}}
       </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-        {{form.password1}}
-        <p class="help-block">Password should be at least 8 characters containing symbol,number,alphabet atleast</p>
+      <div class="input-box">
+        {{form.password1.label}}
+        {{form.password1}}     
+       </div>
+      <div class="input-box">
+        <label>{{form.password2.label}}</label>
+        {{form.password2}}     
+       </div>
+      <div class="policy">
+        <input type="checkbox">
+        <h3>I accept all terms & condition</h3>
       </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Password -->
-      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
-      <div class="controls">
-        {{form.password2}}       
-         <p class="help-block">Please confirm password</p>
+      <div class="input-box button">
+        <input type="Submit" value="Register Now">
       </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <button class="btn btn-success" type="submit"><a href = "{% url 'user-login' %}"></a>Register</button>
+      <div class="text">
+        <h3>Already have an account? <a href="{% url 'user-login' %}">Login now</a></h3>
       </div>
-    </div>
-
-    <div class="control-group">
-        <!-- Button -->
-        <div class="controls">
-          <button class="btn btn-success" ><a href = "{% url 'user-login' %}">I have an account?</a></button>
-        </div>
-      </div>
-
-  </fieldset>
-</form>
-{{form.errors}}
-
-<!-- <form method="POST" action="">
-    {% csrf_token %}
-       {{form.username.label}}
-       {{form.username}}
-
-       {{form.email.label}}
-       {{form.email}}
-
-       {{form.password1.label}}
-       {{form.password1}}
-        
-       {{form.password2.label}}
-       {{form.password2}}
-<input type="submit" value="create user"> -->
-
-{% endblock %}
+    </form>
+    {{form.errors}}
+  </div>
+</body>
+</html>

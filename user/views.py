@@ -16,28 +16,26 @@ def login(request):
              auth_login(request, authenticated_user)
              return redirect('dashboard-index')
          else:
-             messages.info(request,'Provide information doesnot match our database')
+             messages.error(request,f'Provided credentials doesnot match our database')
 
      context ={}
      return render(request,'user/login.html',context)
 
 def register(request):
-   form = createuserform()
    if request.method == 'POST':
        form = createuserform(request.POST)
        if form.is_valid:
-           form.save()
-           user=form.cleaned_data.get('username')
-           messages.success(request,'Account was created sucessfully ' + user +' continue to log in ')
-           return redirect('user-login')
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request,f'Account was created sucessfully ' + user +' continue to log in ')
+            return redirect('user-login')
        else:     
-           messages.success(request,'The User could not be created because the data didnot validate. ')
+            print(form.errors)  
    else:
        form = createuserform()
-       
-
    context = {
-        'form':form
+        'form':form,
+        
     }
    return render(request,'user/register.html',context)
 

@@ -4,8 +4,10 @@ from .models import Product,Order
 from .form import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .decorators import auth_users, allowed_users
 
-@login_required
+
+@login_required(login_url='user-login')
 def index(request):
     orders = Order.objects.all()
     products = Product.objects.all()
@@ -33,7 +35,8 @@ def index(request):
     return render(request,'dashboard/index.html',context)
 
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def costumer(request):
     costumers = User.objects.all()
     orders = Order.objects.all()
@@ -49,7 +52,8 @@ def costumer(request):
     }
     return render(request,'dashboard/costumer.html',context)
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def costumerdetail(request,pk):
     costumers = User.objects.get(id=pk)
     context = {
@@ -57,7 +61,8 @@ def costumerdetail(request,pk):
     }
     return render(request,'dashboard/costumerdetail.html',context)
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def product(request):
     costumers = User.objects.all()
     orders = Order.objects.all()
@@ -84,7 +89,8 @@ def product(request):
     }
     return render(request,'dashboard/product.html',context)
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def product_edit(request, pk):
     item =Product.objects.get(id=pk)
     if request.method =='POST':
@@ -101,7 +107,8 @@ def product_edit(request, pk):
     return render(request, 'dashboard/productedit.html', context)
 
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def product_delete(request, pk):
     item = Product.objects.get(id=pk)
     if request.method == 'POST':
@@ -112,7 +119,8 @@ def product_delete(request, pk):
     }
     return render(request, 'dashboard/deleteproduct.html', context)
         
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def order(request):
     orders= Order.objects.all()
     costumers = User.objects.all()
@@ -129,7 +137,8 @@ def order(request):
     return render(request,'dashboard/order.html',context)
 
 
-@login_required
+@login_required(login_url='user-login')
+@allowed_users(allowed_roles=['Admin'])
 def alltables(request):
     items = Product.objects.all()
     orders= Order.objects.all()
@@ -143,3 +152,6 @@ def alltables(request):
      'product':products,
     }
     return render(request,'tables.html',context)
+
+def aboutus(request):
+    return render(request,'aboutus.html')

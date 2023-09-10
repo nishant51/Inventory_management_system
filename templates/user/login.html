@@ -18,6 +18,8 @@
 
     body{
         padding:70px;
+        
+
     }
     h1{
         margin:auto;
@@ -30,17 +32,17 @@
 </style>
 
 <head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/></head>
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-{{ message.tags }}" id ='containr'>
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
+<body>
 <div class="container">
 	<div class="row">
 		 <h1><i class="fa fa-lock" aria-hidden="true"></i> Login</h1>
-       
+         {% if messages %}
+         {% for message in messages %}
+         <div class="alert alert-{{ message.tags }}">
+             {{ message }}
+         </div>
+         {% endfor %}
+         {% endif %}
         </div><br /><br />
         
         <form method="POST" action="">
@@ -72,3 +74,4 @@
          </div>
         </form>
 	</div>
+</body>

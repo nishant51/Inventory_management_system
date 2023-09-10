@@ -11,4 +11,6 @@ urlpatterns = [
     path('products/update/<int:pk>/', views.product_edit,name='dashboard-products-update'),
     path('alltables',views.alltables,name='alltables'),
     path('order/',views.order,name='dashboard-order'),
+    path('aboutus/',views.aboutus,name='aboutus'),
+
 ]

@@ -34,10 +34,9 @@
   
 
     <!-- Begin Page Content -->
-    {% if user.is_authenticated and user.is_staff and user.is_superuser  %}
 
-    
-     <div class="container-fluid">
+    {% if user.is_authenticated and user.is_staff %}
+       <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -48,9 +47,9 @@
         {% include 'dashboard/content.html' %}
 
 
-  <!--Graphs-->
-  <div class="container">
-    <div class="row my-5">
+     <!--Graphs-->
+     <div class="container">
+       <div class="row my-5">
         <div class="col-md-6">
             <div class="bg-white">
                 <canvas id="myChart1" width="400" height="300"></canvas>
@@ -137,18 +136,14 @@
                           }
                       }
                   });
-              </script>
-          </div>
-      </div>
-    </div>
-</div>
+                   </script>
+               </div>
+           </div>
+         </div>
+     </div>
+       </div>
 <!--End Graphs-->
 
-    {% else%}
-     <div class="container">
-          {% include 'dashboard/userindex.html' %}
-     </div>
-    {% endif %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -165,5 +160,8 @@
 </body>
 
 </html>
+ {% else %}
+   {% include 'dashboard/userindex.html' %}
+{% endif %}
 {%endblock%}
 
