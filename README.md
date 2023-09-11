@@ -3,7 +3,7 @@
 A step-by-step instructions to get started with an Inventory Management System Django project that includes a requirements.txt file. This assumes you have Python and Django already installed on your system:
 ### Getting Started
 
-Inventory Management System is which provides powerful low-level stock control and part tracking. The core of the IMS system is a Python/Django database backend which provides an admin interface (web-based)A powerful plugin system provides support for custom applications and extensions for viewing editing and manageing the products costumers and a over all product and currency flow in the system. TO get started :
+Inventory Management System is which provides powerful low-level stock control and part tracking. The core of the IMS system is a Python/Django database backend which provides an admin interface (web-based). A powerful plugin system provides support for custom applications and extensions for viewing editing and managing the products costumers and a over all order and currency flow in the system. TO get started :
 
 
 1. **Clone the Repository**:
