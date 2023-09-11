@@ -52,14 +52,14 @@ Inventory Management System is which provides powerful low-level stock control a
 
    You can now start using the Inventory Management System. Depending on the features and functionality of your specific project, users can interact with the system to manage inventory, add products, view reports, etc.
 
-## for admin the homepage may look as:
+## for admin the homepage may look as( click to view ):
 
 [![Admin_view](https://img.youtube.com/vi/3YNe3_y4OGs/0.jpg)](https://www.youtube.com/watch?v=3YNe3_y4OGs)
 
-## for costumer or user the homepage may look as:
+## for costumer or user the homepage may look as( click to view ):
 
 [![Costumer_view](https://img.youtube.com/vi/YilbyB_mVJU/0.jpg)](https://www.youtube.com/watch?v=YilbyB_mVJU)
 
-## DEPloyment done in heruko 
+## Deployment done in heruko 
 
    You can find detailed instructions for deploying the serverbased code as django in Heruko here: [Heruko deployment Environments](https://devcenter.heroku.com/articles/how-heroku-works)
