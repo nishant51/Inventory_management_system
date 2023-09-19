@@ -24,10 +24,10 @@ def login(request):
 def register(request):
    if request.method == 'POST':
        form = createuserform(request.POST)
-       if form.is_valid:
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request,f'Account was created sucessfully ' + user +' continue to log in ')
+       if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request,f'Account was created sucessfully ' + username +' continue to log in ')
             return redirect('user-login')
        else:     
             print(form.errors)  
@@ -35,7 +35,6 @@ def register(request):
        form = createuserform()
    context = {
         'form':form,
-        
     }
    return render(request,'user/register.html',context)
 
