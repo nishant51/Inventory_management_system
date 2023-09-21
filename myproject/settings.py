@@ -90,23 +90,6 @@ DATABASES['default']= dj_database_url.parse("postgres://ims_django_render_user:9
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': {
-            'min_length': 5,
-        }
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
 
 
 
@@ -130,8 +113,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-""" STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles' # For Deployment """
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles' # For Deployment
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -151,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 8,  # Change this to your desired minimum password length
+            'min_length': 5,  # Change this to your desired minimum password length
         }
     },
     {
