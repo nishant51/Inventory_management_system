@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Product,Order
 from .form import *
 from django.contrib.auth.models import User
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from .decorators import auth_users, allowed_users
 
@@ -36,7 +37,7 @@ def index(request):
 
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def costumer(request):
     costumers = User.objects.all()
     orders = Order.objects.all()
@@ -53,7 +54,7 @@ def costumer(request):
     return render(request,'dashboard/costumer.html',context)
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def costumerdetail(request,pk):
     costumers = User.objects.get(id=pk)
     context = {
@@ -62,7 +63,7 @@ def costumerdetail(request,pk):
     return render(request,'dashboard/costumerdetail.html',context)
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def product(request):
     costumers = User.objects.all()
     orders = Order.objects.all()
@@ -90,7 +91,7 @@ def product(request):
     return render(request,'dashboard/product.html',context)
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def product_edit(request, pk):
     item =Product.objects.get(id=pk)
     if request.method =='POST':
@@ -108,7 +109,7 @@ def product_edit(request, pk):
 
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def product_delete(request, pk):
     item = Product.objects.get(id=pk)
     if request.method == 'POST':
@@ -120,7 +121,7 @@ def product_delete(request, pk):
     return render(request, 'dashboard/deleteproduct.html', context)
         
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def order(request):
     orders= Order.objects.all()
     costumers = User.objects.all()
@@ -138,7 +139,7 @@ def order(request):
 
 
 @login_required(login_url='user-login')
-@allowed_users(allowed_roles=['Admin'])
+@staff_member_required
 def alltables(request):
     items = Product.objects.all()
     orders= Order.objects.all()
