@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import dj_database_url
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xh(nt$%1u^$t8)4h(*vmye^#p-prh8j^kiqe@oq00f2@y3owzl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*'] 
 
@@ -78,16 +79,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-} """
-
-DATABASES ={
-    'default' :dj_database_url.parse("postgres://ims_django_render_user:9OqD9MSxOZKHPYAkLw4POVoxEMR5rX7X@dpg-ck5qqjj6fquc7391mkb0-a.oregon-postgres.render.com/ims_django_render")
 } 
+
+""" DATABASES ={
+    'default' :dj_database_url.parse("postgres://ims_django_render_user:9OqD9MSxOZKHPYAkLw4POVoxEMR5rX7X@dpg-ck5qqjj6fquc7391mkb0-a.oregon-postgres.render.com/ims_django_render")
+}  """
 
 
 # Password validation
@@ -111,20 +112,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+""" STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') """
+STATIC_URL = 'static/'
+""" STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+ """
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles' # For Deployment
-
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
