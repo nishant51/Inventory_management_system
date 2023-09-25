@@ -59,7 +59,7 @@ https://github.com/nishant51/Inventory_management_system/assets/73015184/df7584a
 
 ## for costumer or user the homepage may look as( click to view ):
 
-[![Costumer_view](https://img.youtube.com/vi/YilbyB_mVJU/0.jpg)](https://www.youtube.com/watch?v=YilbyB_mVJU)
+https://github.com/nishant51/Inventory_management_system/assets/73015184/9ef8520f-3b07-47a8-bc95-8ead3b1724f3
 
 ## Deployment done in render 
 
