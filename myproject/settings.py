@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xh(nt$%1u^$t8)4h(*vmye^#p-prh8j^kiqe@oq00f2@y3owzl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*'] 
 
@@ -79,16 +79,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-} 
-
-""" DATABASES ={
-    'default' :dj_database_url.parse("postgres://ims_django_render_user:9OqD9MSxOZKHPYAkLw4POVoxEMR5rX7X@dpg-ck5qqjj6fquc7391mkb0-a.oregon-postgres.render.com/ims_django_render")
 }  """
+
+DATABASES ={
+    'default' :dj_database_url.parse('postgres://ims_django_user:1haJX9UsOazWSskCfCtzXxOfpT8bOtDK@dpg-ck8ipofsasqs73ctss7g-a.oregon-postgres.render.com/ims_django')
+} 
 
 
 # Password validation
