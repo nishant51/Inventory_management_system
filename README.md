@@ -54,12 +54,13 @@ Inventory Management System is which provides powerful low-level stock control a
 
 ## for admin the homepage may look as( click to view ):
 
-[![Admin_view](https://img.youtube.com/vi/3YNe3_y4OGs/0.jpg)](https://www.youtube.com/watch?v=3YNe3_y4OGs)
+https://github.com/nishant51/Inventory_management_system/assets/73015184/df7584a8-ba7a-433a-a294-d3012fe7311b
+
 
 ## for costumer or user the homepage may look as( click to view ):
 
 [![Costumer_view](https://img.youtube.com/vi/YilbyB_mVJU/0.jpg)](https://www.youtube.com/watch?v=YilbyB_mVJU)
 
-## Deployment done in heruko 
+## Deployment done in render 
 
    You can find detailed instructions for deploying the serverbased code as django in Heruko here: [Heruko deployment Environments](https://devcenter.heroku.com/articles/how-heroku-works)
