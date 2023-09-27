@@ -63,4 +63,8 @@ https://github.com/nishant51/Inventory_management_system/assets/73015184/9ef8520
 
 ## Deployment done in render 
 
-   You can find detailed instructions for deploying the serverbased code as django in Heruko here: [Heruko deployment Environments](https://devcenter.heroku.com/articles/how-heroku-works)
+   You can find detailed instructions for deploying the serverbased code as django in Renddr here: (https://render.com/docs/deploy-django)
+
+## deployed site link :
+
+     https://inventorymsystm.onrender.com/
