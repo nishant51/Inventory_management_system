@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'whitenoise.runserver_nostatic',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'dashboard',
     'user',
     'crispy_forms',
@@ -121,12 +121,14 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 MEDIA_URL = 'media/'
 
 STORAGES = {
-    "mediafiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
+    #   "mediafiles": {
+    #       "BACKEND": "whitenoise.storage.CompressedManifestmediaFilesStorage",
+    #        },
+
+        "staticfiles": {
+             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+           },
+    
 }
 
 
