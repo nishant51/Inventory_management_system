@@ -1,3 +1,7 @@
+# link to site : https://inventorymsystm.onrender.com
+superadmin: UN:admin pwd:admin
+user®️ register ur own or[ UN: testhero pwd:testhero@123 ]
+
 # Inventory_management_system
 
 A step-by-step instructions to get started with an Inventory Management System Django project that includes a requirements.txt file. This assumes you have Python and Django already installed on your system:
